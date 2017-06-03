@@ -1,0 +1,132 @@
+
+.ui-tooltip {
+  background: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+  box-shadow: 0 0 7px black;
+}
+
+/* used for the X & V bottons on the select time tooltip */
+.clr_cancel { color:red; }
+.clr_ok { color: green; }
+
+/* just for the timebar self */
+.bar { 
+  padding:0px;
+  margin:0px;
+  margin:0 auto;
+  border-radius: 5px;
+}
+
+.bar .default_background_color {
+  background : white;
+}
+
+.bar .offset_before {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid lightgray;
+  background : white;
+}
+
+.bar .offset_after {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background : white;
+}
+
+.bar_vertical {
+  border: 1px solid gray;
+  background : lightgray;
+  width: 20px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(201,201,201,1);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(201,201,201,1);
+  box-shadow: 0px 0px 10px 1px rgba(201,201,201,1);
+  background: #f6f8f9;
+  background: -moz-linear-gradient(left, #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%);
+  background: -webkit-linear-gradient(left, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+  background: linear-gradient(to right, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 );
+}
+
+.bar_horizontal {
+  border: 1px solid gray;
+  background : lightgray;
+  height: 20px;
+  display: inline-block;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(201,201,201,1);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(201,201,201,1);
+  box-shadow: 0px 0px 10px 1px rgba(201,201,201,1);
+  background: #f6f8f9;
+  background: -moz-linear-gradient(top, #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%);
+  background: -webkit-linear-gradient(top, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+  background: linear-gradient(to bottom, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=0 );
+}
+
+.bar_horizontal .offset_before,
+.bar_horizontal .offset_after,
+.bar_horizontal .timebar_unit {
+  height:20px;
+  display: inline-block;
+}
+
+.bar_horizontal .offset_before {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px solid lightgray;
+  background : white;
+  border-bottom: none;
+}
+
+.bar_horizontal .offset_after {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background : white;
+}
+
+.bar_title {
+  padding:0px;
+  padding-bottom:5px;
+}
+
+.unit {
+  height: {$intScaleFactor}px;
+  width: 20px;
+}
+
+.hour_indicator_vertical {
+  height: 20px;
+  width: 52px;
+  border: 0px;
+  border-top: 1px solid grey;
+  float: left;
+  margin-left:-52px;
+  margin-top: -1px;
+  text-align: left
+}
+
+.hour_indicator_horizontal {
+  height: 20px;
+  width: 50px;
+  border: 0px;
+  border-left: 1px solid grey;
+  margin-top: -40px;
+  text-align: left;
+  position: absolute;
+  padding-left: 2px;
+}
+
+/* default coloring of the selected time */
+
+.bar .enabled {
+  background: green;
+}
+
