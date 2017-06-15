@@ -17,6 +17,8 @@ if ( !$.fn.TimeBar  )
         strEnabledClassName     : '',
         intReadOnly             : 0,
         intZoomFactor           : 1,
+        arrIndicators           : ['00'],
+        arrIndicatorTexts       : ['00'],
     };
 
     function getOption(inst, name) 
@@ -107,6 +109,8 @@ if ( !$.fn.TimeBar  )
                                    strEnabledClassName : '',
                                    intReadOnly         : 0,
                                    intZoomFactor       : 1,
+                                   arrIndicators       : ['00'],
+                                   arrIndicatorTexts   : ['00'],
                                  }, options );
 
 
@@ -146,11 +150,10 @@ if ( !$.fn.TimeBar  )
                  for ( var i = intStartTimeStamp; i <= intEndTimeStamp ; i += intTimeSteps  )
                  {
                     var strTime       = getTimeFromTimeStamp( i, true );
+                    var arrTimeParts  = strTime.split(':');
 
                     // Add some Indicators
-                    if ( ( intIndx == 0 ) || // First time
-                         ( i % 3600 == 0 )   // Modulus = 0 
-                    )
+                    if ( arrConfig.arrIndicators.indexOf(arrTimeParts[1]) > -1 ) // search "15" in array
                     {
                       var strMarginLeft = '';
                       if ( arrConfig.strDirection == 'horizontal' )
@@ -158,7 +161,13 @@ if ( !$.fn.TimeBar  )
                         strMarginLeft = 'style="margin-left:' + ( parseInt(arrConfig.intOffset) + ( arrConfig.intZoomFactor * intIndx * arrConfig.intTimeSteps ) ) + ';"';
                       }
 
-                      strHtml        += '<div class="hour_indicator_' + arrConfig.strDirection + '" ' + strMarginLeft + '>' + strTime + arrConfig.strHour + '</div>';
+                      var strIndicatorText = '';
+                      if ( arrConfig.arrIndicatorTexts.indexOf(arrTimeParts[1]) > -1 )
+                      {
+                        strIndicatorText   = strTime + arrConfig.strHour;
+                      }
+
+                      strHtml        += '<div class="hour_indicator_' + arrConfig.strDirection + '" ' + strMarginLeft + '>' + strIndicatorText + '</div>';
                     }
 
                     // If this is our last one, we should add a different background class ...

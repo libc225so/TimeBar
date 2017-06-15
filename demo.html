@@ -29,6 +29,10 @@
         width: 100%;
       }
 
+      td {
+        vertical-align: top;
+      }
+
       pre {
         border: 1px solid grey;
       }
@@ -102,6 +106,8 @@ $(document).ready( function()
                         intReadOnly             : 0,
                         intZoomFactor           : 3,
                         strEnabledClassName     : 'green_hor',
+                        arrIndicators           : ['00', '30'],
+                        arrIndicatorTexts       : ['00'],
                       });
 
 });
@@ -267,6 +273,18 @@ function ClearDay ( intDayNo )
               <td>Name of an additional class to use when drawing a period</td>
               <td>"my_fitness_class_name"</td>
               <td>""</td>
+            </tr>
+            <tr>
+              <td>arrIndicators</td>
+              <td>An array with minutes where to show the indicator lines</td>
+              <td>"['00','15','30','45']"</td>
+              <td>"['00']"</td>
+            </tr>
+            <tr>
+              <td>arrIndicatorTexts</td>
+              <td>An array with minutes where to show the TEXT on the indicator lines( arrIndicators setting with equal minutes is mandatory)</td>
+              <td>"['00','30']"</td>
+              <td>"['00']"</td>
             </tr>
           </table>
       </div>
