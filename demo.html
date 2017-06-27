@@ -93,6 +93,19 @@ $(document).ready( function()
   $('#bar3').TimeBar('strEnabledClassName','running');
   $('#bar3').TimeBar('Load','13:0','16:00');
 
+  $("#bar4").TimeBar({  strTimeStart        : '9:00',
+                        strTimeStop         : '18:00',
+                        intTimeSteps        : 5,
+                        intOffset           : 20,
+                        strTimeSelectTitle  : 'Kies tijd:',
+                        strFrom             : 'van',
+                        strTill             : 't/m',
+                        strHour             : 'u',
+                        strEnabledClassName : 'green_ver',
+                     });
+
+  $('#bar4').TimeBar('Load', ( $('#bar3').TimeBar('Dump') ) );
+
 
   $("#bar99").TimeBar({ strTimeStart            : '0:00',
                         strTimeStop             : '4:00',
@@ -110,7 +123,12 @@ $(document).ready( function()
                         arrIndicatorTexts       : ['00'],
                       });
 
+  
+
+
 });
+
+
 
 
 // Simple global helper function
@@ -160,6 +178,10 @@ function ClearDay ( intDayNo )
         <div id="wednesday" class="day">
           <div class="bar_title">Wednesday <i class="fa fa-times fa-p clr_cancel clear_day" title="Clear Wednesday" aria-hidden="true" onclick='ClearDay(3);return false;' ></i></div>
           <div class="bar" id="bar3"></div>
+        </div>
+        <div id="thursday" class="day">
+          <div class="bar_title">Thursday <i class="fa fa-times fa-p clr_cancel clear_day" title="Clear Wednesday" aria-hidden="true" onclick='ClearDay(4);return false;' ></i></div>
+          <div class="bar" id="bar4"></div>
         </div>
       </div>
 
@@ -296,22 +318,38 @@ function ClearDay ( intDayNo )
             <tr>
               <td>Name</td>
               <td>Description</td>
-              <td>Get / Set</td>
-              <td>return value</td>
-              <td>argument 1</td>
-              <td>argument 2</td>
+              <td NOWRAP>Get / Set</td>
+              <td NOWRAP>return value</td>
+              <td NOWRAP>argument 1</td>
+              <td NOWRAP>argument 2</td>
             </tr>
             <tr>
               <td colspan="6"><hr></td>
             <tr>
             </tr>
             <tr>
+              <td>Dump</td>
+              <td>Dump the data from the TimeBar in an array of named arrays with names: from, till, type.</td>
+              <td>Get</td>
+              <td NOWRAP >[ ["from" = "10:00",<br>"till" = "15:00",<br>"type" = "fitness"],<br>[...] ]</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
               <td>Load</td>
-              <td>Load a period onto the TimeBar</td>
+              <td>Load a period into the TimeBar (using 2 argument strings: from / till)</td>
               <td>Set</td>
               <td>void</td>
               <td>"HH:MM"</td>
               <td>"HH:MM"</td>
+            </tr>
+            <tr>
+              <td>Load</td>
+              <td>Load a period into the TimeBar (using 1 argument array: )</td>
+              <td>Set</td>
+              <td>void</td>
+              <td NOWRAP >[ ["from" = "10:00",<br>"till" = "15:00",<br>"type" = "fitness"],<br>[...] ]</td>
+              <td></td>
             </tr>
             <tr>
               <td>Clear</td>

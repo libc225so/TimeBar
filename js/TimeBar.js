@@ -366,10 +366,78 @@ if ( !$.fn.TimeBar  )
               {
                 // console.log ('TimeBar::Load: Need to load times From:' + strTimeFrom + ', strTimeEnd:' + strTimeEnd );
 
-                // TimeBar::Load: Need to PAINT from From: 14:0 Till:15:0
-                $('#' + this.attr("id")).TimeBar( "Paint", 
-                                                  strTimeFrom, 
-                                                  strTimeEnd);
+                if ( strTimeFrom instanceof Array )
+                {
+                  // console.log ('TimeBar::Load: Input given is type ARRAY !');
+                  for ( var i = 0; i < strTimeFrom.length ; i++ )
+                  {
+                    // Determine if we have 2 or 3 elements ( 3 elements mean, set the type as in classname )
+                    var intEntryLength = strTimeFrom[i];
+
+                    if ( intEntryLength == 2 )
+                    {
+                      // TimeBar::Load: Need to PAINT from From: 14:0 Till:15:0
+                      $('#' + this.attr("id")).TimeBar( "Paint", 
+                                                        strTimeFrom[i]["from"], 
+                                                        strTimeFrom[i]["till"]);
+                    }
+                    else
+                    {
+                      // Set: strEnabledClassName
+                      $('#' + this.attr("id")).TimeBar('strEnabledClassName',strTimeFrom[i]["type"]);
+
+                      // TimeBar::Load: Need to PAINT from From: 14:0 Till:15:0
+                      $('#' + this.attr("id")).TimeBar( "Paint", 
+                                                        strTimeFrom[i]["from"], 
+                                                        strTimeFrom[i]["till"]);
+                    }
+                  }
+                }
+                else
+                {
+                  // TimeBar::Load: Need to PAINT from From: 14:0 Till:15:0
+                  $('#' + this.attr("id")).TimeBar( "Paint", 
+                                                    strTimeFrom, 
+                                                    strTimeEnd);
+                }
+              },
+        Dump: function() 
+              {
+                // console.log ('TimeBar::Dump: Need to Dump all Data');
+                var arrData = [];
+
+                // Walk the Data Nodes 
+                var objData = $('#'+ this.attr("id")  + '_storage').children();
+
+                for ( var y = 0; y < objData.length ; y++ )
+                {
+                  var objNode         = objData[y];
+                  var arrSplittedName = objNode.name.split("[");
+
+                  var arrSplitIndex   = arrSplittedName[2].split("]");
+                  var intIndex        = parseInt(arrSplitIndex[0]);
+
+                  if ( objNode.name.indexOf("from") > 0 )
+                  {
+                    arrData[intIndex]         = [];
+                    arrData[intIndex]['from'] = '';
+                    arrData[intIndex]['till'] = '';
+                    arrData[intIndex]['type'] = '';
+
+                    arrData[intIndex]['from'] = objNode.value;
+                  }
+                  else if ( objNode.name.indexOf("till") > 0  )
+                  {
+                    arrData[intIndex]['till'] = objNode.value;
+                  }
+                  else if ( objNode.name.indexOf("type") > 0 )
+                  {
+                    arrData[intIndex]['type'] = objNode.value;
+                  }
+                }
+
+                // Deliver
+                return arrData;
               },
         Paint: function( strFrom, strTill ) 
                {
